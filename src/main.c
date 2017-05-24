@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/23 18:10:24 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 00:12:12 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ void	get_player(t_filler *data)
 	int8_t	number;
 	char	*line;
 
+	DEBUG("Get Player");
 	get_next_line(STDIN, &line);
 	tmp = ft_strchr(line, 'p');
+	DEBUG("Tmp = %s", tmp);
 	++tmp;
 	number = ft_atoi(tmp);
 	data->player = (number == 1) ? 'O' : 'X';

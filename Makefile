@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/05/23 18:04:42 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/05/24 00:09:46 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME		:= filler
 CC			:= gcc
 #CFLAGS		+= -Wall -Wextra -Werror
 CFLAGS		+= -I includes/ -I libft/includes/
+CFLAGS		+= -g
 LDFLAGS		:= -L libft/ -lft
 
 LIBFT		:= libft/libft.a
