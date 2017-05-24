@@ -1,5 +1,7 @@
 alloc_wrap.c
 filler
+out
+filler.trace
 
 # Object files #
 ###################
