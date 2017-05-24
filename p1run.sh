@@ -1,2 +1,2 @@
 make
-./filler_vm -f maps/map00 -p2 ./filler p1 players/abanlin.filler
+./filler_vm -f maps/map00 -p1 ./filler -p2 players/abanlin.filler
