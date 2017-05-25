@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 17:18:52 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 19:37:09 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 19:49:11 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	print_heatmap(t_filler *data)
 	int		i;
 	char	c;
 
+	DEBUG("%{red}Print Heatmap%{eoc}");
 	j = -1;
 	while (++j < data->map_y)
 	{
