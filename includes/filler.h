@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:49:07 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 19:43:18 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 20:17:35 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FILLER_H
 # include <libft.h>
 # define STDIN STDIN_FILENO
+# define STDERR STDERR_FILENO
+# define STDOUT STDOUT_FILENO
 
 typedef struct	s_filler
 {
