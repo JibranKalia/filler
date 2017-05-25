@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:39 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 16:56:49 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 19:33:43 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		create_piece(t_filler *data)
 	j = -1;
 	while (++j < y)
 	{
-		data->piece[j] = ft_strnew(x);
+		data->piece[j] = (char *)ft_memalloc(sizeof(char) * x);
 		MEMCHECK(data->piece[j]);
 	}
 	return (0);
@@ -37,7 +37,7 @@ int		check_piece(t_filler *data)
 
 	j = -1;
 	while (++j < data->piece_y)
-		DEBUG("c = %s", data->piece[j]);
+		DEBUG("%d", data->piece[j]);
 	return (0);
 }
 

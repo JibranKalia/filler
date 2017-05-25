@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:49:07 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 17:08:48 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 19:36:58 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct	s_filler
 	char		player;
 	char		ai;
 	char		**map;
-	char		**heatmap;
+	int			**heatmap;
 	char		**piece;
 	int			piece_x;
 	int			piece_y;
@@ -47,5 +47,10 @@ int				make_heatmap(t_filler *data);
 int				read_piece(t_filler *data);
 int				check_piece(t_filler *data);
 void			clean_piece(t_filler *data);
+
+/*
+** HEATMAP
+*/
+void	print_heatmap(t_filler *data);
 
 #endif
