@@ -6,12 +6,11 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:36 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 17:28:10 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 20:35:05 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
-
 
 int		make_map(t_filler *data)
 {
@@ -73,6 +72,7 @@ void	read_map(t_filler *data)
 	int		cpylen;
 	char	*line;
 
+	DEBUG("Read Map");
 	j = -1;
 	while (++j < data->map_y)
 	{

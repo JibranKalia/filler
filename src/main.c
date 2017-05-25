@@ -6,19 +6,22 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 20:21:47 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 20:30:21 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 #define TESTPRINT(M, ...) ft_dprintf(2, M, ##__VA_ARGS__);
 
+/**
 void	data_cleanup(t_filler *data)
 {
 	(void)data;
 	ft_tbldel(data->map);
 	ft_tbldel(data->piece);
 }
+**/
+
 
 void	put_answer(t_filler *data)
 {
@@ -94,6 +97,7 @@ int		main(void)
 		check_map(data);
 		read_piece(data);
 		check_piece(data);
+		update_heatmap(data);
 		print_heatmap(data);
 //		player_move(data);
 		put_answer(data);

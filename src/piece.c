@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:39 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 19:46:50 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 20:28:21 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		read_piece(t_filler *data)
 	int		i;
 
 	i = 0;
-	DEBUG("%{red}read piece%{eoc}");
+	DEBUG("Read Piece");
 	get_next_line(STDIN, &line);
 	while (!ISDIGIT(line[i]))
 		++i;
