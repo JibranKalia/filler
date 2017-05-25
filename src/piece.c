@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:39 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 16:40:16 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 16:56:49 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,24 @@ int		check_piece(t_filler *data)
 	while (++j < data->piece_y)
 		DEBUG("c = %s", data->piece[j]);
 	return (0);
+}
+
+void	clean_piece(t_filler *data)
+{
+	int		j;
+	int		y;
+	int		x;
+
+	y = data->piece_y;
+	x = data->piece_x;
+
+	j = -1;
+	while (++j < y)
+	{
+		free(data->piece[j]);
+		data->piece[j] = NULL;
+	}
+	data->piece = NULL;
 }
 
 void	fill_piece(t_filler *data)
