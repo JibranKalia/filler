@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 22:01:46 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 22:28:47 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void	get_player(t_filler *data)
 	ft_strdel(&line);
 }
 
-/**
-int		is_safe(t_filler *data)
+int		is_safe(t_filler *data, int x, int y)
 {
 
 	return (1);
 }
 
+/**
 void	check_priority(t_filler *data, int x, int y)
 {
 

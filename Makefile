@@ -6,7 +6,7 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/05/24 17:19:57 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/05/24 22:20:10 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,3 +51,8 @@ fclean: clean
 	@echo "\033[32mRemoved FILLER\033[0m"
 
 re: fclean all
+
+blah:
+	rm -rf $(OBJ) $(NAME)
+
+reset: blah all
