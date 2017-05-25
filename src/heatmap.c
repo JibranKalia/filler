@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 17:18:52 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 21:57:24 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 22:15:20 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_heatmap(t_filler *data)
 		ft_dprintf(2, "\t%{green}");
 		while (++i < data->map_x)
 		{
-			ft_dprintf(2, "%4d", data->heatmap[j][i]);
+			ft_dprintf(2, "%3d", data->heatmap[j][i]);
 		}
 		ft_dprintf(2, "\n");
 		ft_dprintf(2, "%{eoc}");
@@ -64,7 +64,7 @@ void	fill_heatmap(t_filler *data, int x, int y)
 	int		curr;
 
 	j = y;
-	curr = 100;
+	curr = 99;
 	while (j >= 0)
 	{
 		data->heatmap[j][x] = MAX(data->heatmap[j][x], curr);
@@ -72,7 +72,7 @@ void	fill_heatmap(t_filler *data, int x, int y)
 		if (curr > 0)
 			--curr;
 	}
-	curr = 100;
+	curr = 99;
 	j = y;
 	while (j < data->map_y)
 	{
