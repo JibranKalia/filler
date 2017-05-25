@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:36 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 20:35:05 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 21:25:51 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,10 @@ int		check_map(t_filler *data)
 	char	c;
 
 	j = -1;
+	DEBUG("Check Map");
 	while (++j < data->map_y)
 	{
-		DEBUG("c = %s", data->map[j]);
+		DEBUG("%s", data->map[j]);
 	}
 	return (0);
 }
@@ -68,8 +69,6 @@ void	read_map(t_filler *data)
 {
 	int		j;
 	int		i;
-	int		n;
-	int		cpylen;
 	char	*line;
 
 	DEBUG("Read Map");
@@ -80,8 +79,7 @@ void	read_map(t_filler *data)
 		get_next_line(STDIN, &line);
 		while (ISDIGIT(line[i]) || ISSPACE(line[i]))
 			++i;
-		n = ft_strlen(&line[i]);
-		memcpy(data->map[j], &line[i], n);
+		memcpy(data->map[j], &line[i], data->map_x);
 		ft_strdel(&line);
 	}
 }

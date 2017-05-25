@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 20:30:21 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 21:05:19 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,10 @@ void	data_cleanup(t_filler *data)
 }
 **/
 
-
 void	put_answer(t_filler *data)
 {
-	data->out_x = 5;
-	data->out_y = 5;
 	DEBUG("x = %d\t y = %d", data->out_x, data->out_y);
-	//ft_dprintf(STDERR, "%d %d\n", data->out_x, data->out_y);
-	ft_dprintf(STDIN, "%d %d\n", data->out_x, data->out_y);
-	//ft_dprintf(STDOUT, "%d %d\n", data->out_x, data->out_y);
+	ft_printf("%d %d\n", data->out_x, data->out_y);
 }
 
 void	get_player(t_filler *data)
@@ -55,7 +50,6 @@ int		is_safe(t_filler *data)
 
 	return (1);
 }
-
 
 void	check_priority(t_filler *data, int x, int y)
 {
@@ -100,8 +94,9 @@ int		main(void)
 		update_heatmap(data);
 		print_heatmap(data);
 //		player_move(data);
-		put_answer(data);
-//		ft_strdel(&line);
+//		put_answer(data);
+		ft_strdel(&line);
+		exit(0);
 	}
 	return (0);
 }
