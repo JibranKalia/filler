@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:49:07 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 20:26:44 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 15:52:12 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct	s_filler
 }				t_filler;
 
 void			get_player(t_filler *data);
+
+void			player_move(t_filler *data);
 
 /*
 ** MAP

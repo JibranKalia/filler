@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 22:28:47 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 16:46:04 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	data_cleanup(t_filler *data)
 void	put_answer(t_filler *data)
 {
 	DEBUG("x = %d\t y = %d", data->out_x, data->out_y);
-	ft_printf("%d %d\n", data->out_x, data->out_y);
+	printf("%d %d\n", data->out_x, data->out_y);
 }
 
 void	get_player(t_filler *data)
@@ -41,45 +41,16 @@ void	get_player(t_filler *data)
 	data->player = (number == 1) ? 'O' : 'X';
 	data->ai = (number == 1) ? 'X' : 'O';
 	DEBUG("Player = %d", number);
+	DEBUG("Player = %c\t AI = %c", data->player, data->ai);
 	ft_strdel(&line);
 }
-
-int		is_safe(t_filler *data, int x, int y)
-{
-
-	return (1);
-}
-
-/**
-void	check_priority(t_filler *data, int x, int y)
-{
-
-}
-
-void	player_move(t_filler *data)
-{
-	int		i;
-	int		j;
-
-	j = -1;
-	while (++j < data->map_y)
-	{
-		i = -1;
-		while (++i < data->map_y);
-		{
-			if (is_safe(data) == 1)
-				set_piece(data);
-				//check_priority(data, i, j);
-		}
-	}
-}
-**/
 
 int		main(void)
 {
 	t_filler	*data;
 	char		*line;
 
+	DEBUG("INSIDE MAIN");
 	data = ft_memalloc(sizeof(t_filler *));
 	get_player(data);
 	get_mapdem(data);
@@ -93,8 +64,8 @@ int		main(void)
 		check_piece(data);
 		update_heatmap(data);
 		print_heatmap(data);
-//		player_move(data);
-//		put_answer(data);
+		player_move(data);
+		put_answer(data);
 //		ft_strdel(&line);
 		exit(0);
 	}

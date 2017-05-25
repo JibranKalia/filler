@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:36 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 22:13:01 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 16:36:31 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int		make_map(t_filler *data)
 void	get_mapdem(t_filler *data)
 {
 	char	*line;
-	size_t	line_cap;
-	int	i;
+	int		i;
 
 	i = 0;
 	get_next_line(STDIN, &line);
@@ -53,22 +52,18 @@ void	get_mapdem(t_filler *data)
 
 int		check_map(t_filler *data)
 {
-	int	j;
-	char	c;
+	int		j;
 
 	j = -1;
 	DEBUG("Check Map");
 	while (++j < data->map_y)
-	{
-		ft_dprintf(2, "\t%{green}%s%{eoc}\n", data->map[j]);
-	}
+		dprintf(2, "%s\t%s\n%s", GREEN, data->map[j], CLEAR);
 	return (0);
 }
 
 void	read_map(t_filler *data)
 {
 	int		j;
-	int		i;
 	char	*line;
 
 	DEBUG("Read Map");

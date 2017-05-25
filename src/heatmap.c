@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 17:18:52 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 22:23:16 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 16:46:56 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,18 @@ void	print_heatmap(t_filler *data)
 {
 	int		j;
 	int		i;
-	char	c;
 
 	DEBUG("Print Heatmap");
 	j = -1;
 	while (++j < data->map_y)
 	{
 		i = -1;
-		ft_dprintf(2, "\t%{green}");
+		dprintf(2, "\t");
 		while (++i < data->map_x)
 		{
-			ft_dprintf(2, "%3d", data->heatmap[j][i]);
+			dprintf(2, "%s%3d%s", GREEN, data->heatmap[j][i], CLEAR);
 		}
-		ft_dprintf(2, "\n");
-		ft_dprintf(2, "%{eoc}");
+		dprintf(2, "\n");
 	}
 }
 
@@ -65,6 +63,7 @@ void	fill_heatmap(t_filler *data, int x, int y)
 
 	j = y;
 	curr = 100;
+	DEBUG("FILL Heatmap x = %d\t y = %d", x, y);
 	while (j >= 0)
 	{
 		data->heatmap[j][x] = MAX(data->heatmap[j][x], curr);
@@ -117,7 +116,7 @@ void	update_heatmap(t_filler *data)
 		i = -1;
 		while (++i < data->map_x)
 		{
-			if (data->map[j][i] == data->ai)
+			if (TOUPPER(data->map[j][i]) == TOUPPER(data->ai))
 				fill_heatmap(data, i, j);
 		}
 	}

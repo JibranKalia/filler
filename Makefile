@@ -6,20 +6,20 @@
 #    By: jkalia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/23 14:12:11 by jkalia            #+#    #+#              #
-#*   Updated: 2017/05/24 22:20:10 by jkalia           ###   ########.fr       *#
+#*   Updated: 2017/05/25 16:00:57 by jkalia           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= filler
 CC			:= gcc
-#CFLAGS		+= -Wall -Wextra -Werror
+CFLAGS		+= -Wall -Wextra -Werror
 CFLAGS		+= -I includes/ -I libft/includes/
 CFLAGS		+= -g
 LDFLAGS		:= -L libft/ -lft
 
 LIBFT		:= libft/libft.a
 
-FILES		+= main piece map utils heatmap
+FILES		+= main piece map heatmap move
 #FILES		+= alloc_wrap
 
 
