@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 17:18:52 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/24 21:23:42 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/24 21:57:24 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ int		make_heatmap(t_filler *data)
 	DEBUG("Make Heatmap");
 	y = data->map_y + 1;
 	x = data->map_x + 1;
-	data->heatmap = (int **)ft_memalloc(sizeof(int *) * y);
+	data->heatmap = (int **)malloc(sizeof(int *) * y);
 	MEMCHECK(data->heatmap);
 	j = -1;
 	while (++j < y)
 	{
-		data->heatmap[j] = (int *)ft_memalloc(sizeof(int) * x);
-		MEMCHECK(data->map[j]);
+		data->heatmap[j] = (int *)malloc(sizeof(int) * x);
+		MEMCHECK(data->heatmap[j]);
 		i = -1;
 		while (++i < x)
 			data->heatmap[j][i] = 0;
