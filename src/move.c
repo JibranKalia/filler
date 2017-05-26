@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 18:26:54 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 19:03:20 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		is_safe(t_filler *data, int x, int y)
 		x = org_x;
 		while (i < data->piece_x)
 		{
-			if (MAP == data->player)
+			if (MAP == data->player && PIECE == '*')
 				++track_o;
 			if (MAP == data->ai)
 				return (-1);
@@ -135,5 +135,5 @@ void	player_move(t_filler *data)
 	}
 	set_piece(data, data->out_x , data->out_y);
 	dprintf(2, "%s x = %d\t y = %d%s\n", RED, data->out_x, data->out_y, CLEAR);
-	printf("%d %d", data->out_x, data->out_y);
+	printf("%d %d\n", data->out_x, data->out_y);
 }

@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 17:18:52 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 18:53:18 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 19:11:58 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,16 @@ int		make_heatmap(t_filler *data)
 
 void	fill_heatmap(t_filler *data, int x, int y)
 {
-	int		curr;
 	int		i;
 	int		j;
 
-	curr = 100;
 	j = -1;
 	while (++j < data->map_y)
 	{
 		i = -1;
 		while (++i < data->map_x)
 		{
-			HEATMAP = MAX(HEATMAP, curr - (ft_abs(x - i) + ft_abs(y - j)));
+			HEATMAP = MAX(HEATMAP, HEATMAX - (ft_abs(x - i) + ft_abs(y - j)));
 		}
 	}
 }
