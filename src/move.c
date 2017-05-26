@@ -6,13 +6,14 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 19:03:20 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 19:24:18 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
 #define MAP data->map[y][x]
+#define PIECE_PT data->piece[j][i] == '*'
 #define PIECE data->piece[j][i]
 
 int		is_safe(t_filler *data, int x, int y)
@@ -31,9 +32,9 @@ int		is_safe(t_filler *data, int x, int y)
 		x = org_x;
 		while (i < data->piece_x)
 		{
-			if (MAP == data->player && PIECE == '*')
+			if (MAP == data->player && PIECE_PT)
 				++track_o;
-			if (MAP == data->ai)
+			if (MAP == data->ai && PIECE_PT)
 				return (-1);
 			++x;
 			++i;
@@ -42,14 +43,13 @@ int		is_safe(t_filler *data, int x, int y)
 		}
 		++j;
 		++y;
-			if (y > data->map_y)
-				return (-1);
+		if (y > data->map_y)
+			return (-1);
 	}
 	if (track_o != 1)
 		return (-1);
 	return (1);
 }
-
 
 void	set_piece(t_filler *data, int x, int y)
 {
