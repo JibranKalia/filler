@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 17:18:52 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 17:19:35 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 17:37:56 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,6 @@ void	update_heatmap(t_filler *data)
 		{
 			if (data->map[j][i] == data->ai)
 				fill_heatmap(data, i, j);
-//			DEBUG("%c\t%c", data->map[j][i], data->ai);
 		}
 	}
 }

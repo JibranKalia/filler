@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:49:07 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 15:52:12 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 17:49:21 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ typedef struct	s_filler
 {
 	int			map_x;
 	int			map_y;
-	int			set_x;
-	int			set_y;
 	int			out_x;
 	int			out_y;
+	int			out_heatscore;
 	char		player;
 	char		ai;
 	char		**map;

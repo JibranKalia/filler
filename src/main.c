@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 17:24:27 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 17:55:45 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,6 @@ void	data_cleanup(t_filler *data)
 	ft_tbldel(data->piece);
 }
 **/
-
-void	put_answer(t_filler *data)
-{
-	DEBUG("x = %d\t y = %d", data->out_x, data->out_y);
-	printf("%d %d\n", data->out_x, data->out_y);
-}
 
 void	get_player(t_filler *data)
 {
@@ -64,7 +58,7 @@ int		main(void)
 		update_heatmap(data);
 		print_heatmap(data);
 		player_move(data);
-		put_answer(data);
+		check_map(data);
 		//		ft_strdel(&line);
 	}
 	return (0);
