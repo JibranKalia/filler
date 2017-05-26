@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 22:50:26 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 23:20:58 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	check_priority(t_filler *data, int x, int y)
 	int		tmpheatscore;
 
 	tmpheatscore = calculate_heatscore(data, x, y);
-	if (data->out_heatscore < tmpheatscore)
+	if (data->out_heatscore <= tmpheatscore)
 	{
 		data->out_x = x;
 		data->out_y = y;
