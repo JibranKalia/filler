@@ -6,13 +6,12 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 19:24:18 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 21:41:18 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-#define MAP data->map[y][x]
 #define PIECE_PT data->piece[j][i] == '*'
 #define PIECE data->piece[j][i]
 
@@ -20,58 +19,40 @@ int		is_safe(t_filler *data, int x, int y)
 {
 	int		i;
 	int		j;
-	int		track_o;
-	int		org_x;
+	int		track;
 
-	j = 0;
-	track_o = 0;
-	org_x = x;
-	while (j < data->piece_y)
+	track = 0;;
+	j = -1;
+	while (++j < data->piece_y)
 	{
-		i = 0;
-		x = org_x;
-		while (i < data->piece_x)
+		i = -1;
+		while (++i < data->piece_x)
 		{
-			if (MAP == data->player && PIECE_PT)
-				++track_o;
-			if (MAP == data->ai && PIECE_PT)
-				return (-1);
-			++x;
-			++i;
-			if (x > data->map_x)
-				return (-1);
+			if (data->piece[j][i] == '*')
+			{
+				if (data->map[y + j][x + i] == data->player)
+					++track;
+				else if (data->map[y + j][x + i] == data->ai)
+					return (-1);
+			}
 		}
-		++j;
-		++y;
-		if (y > data->map_y)
-			return (-1);
 	}
-	if (track_o != 1)
-		return (-1);
-	return (1);
+	return ((track == 1) ? 1 : -1);
 }
 
 void	set_piece(t_filler *data, int x, int y)
 {
 	int		i;
 	int		j;
-	int		org_x;
 
-	j = 0;
-	org_x = x;
 	DEBUG("SET PIECE x = %d\t y = %d", x, y);
-	while (j < data->piece_y)
+
+	j = -1;
+	while (++j < data->piece_y)
 	{
-		i = 0;
-		x = org_x;
-		while (i < data->piece_x)
-		{
-			data->map[y][x] = data->piece[j][i];
-			++x;
-			++i;
-		}
-		++j;
-		++y;
+		i = -1;
+		while (++i < data->piece_x)
+			data->map[y + j][x + i] = data->piece[j][i];
 	}
 }
 
@@ -80,24 +61,17 @@ int		calculate_heatscore(t_filler *data, int x, int y)
 	int		score;
 	int		i;
 	int		j;
-	int		org_x;
 
 	score = 0;
-	j = 0;
-	org_x = x;
-	while (j < data->piece_y)
+	j = -1;
+	while (++j < data->piece_y)
 	{
-		i = 0;
-		x = org_x;
-		while (i < data->piece_x)
+		i = -1;
+		while (++i < data->piece_x)
 		{
-			if (PIECE == '*')
-				score += data->heatmap[y][x];
-			++x;
-			++i;
+			if (data->piece[j][i] == '*')
+				score += data->heatmap[y + j][x + i];
 		}
-		++j;
-		++y;
 	}
 	return (score);
 }
@@ -124,10 +98,10 @@ void	player_move(t_filler *data)
 
 
 	j = -1;
-	while (++j < data->map_y)
+	while (++j + (data->piece_y - 1) < data->map_y)
 	{
 		i = -1;
-		while (++i < data->map_x)
+		while (++i + (data->piece_x - 1) < data->map_x)
 		{
 			if (is_safe(data, i, j) == 1)
 				check_priority(data, i, j);
