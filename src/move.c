@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 17:59:39 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 18:07:51 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,13 +117,6 @@ void	check_priority(t_filler *data, int x, int y)
 	}
 }
 
-void	make_move(t_filler *data)
-{
-	set_piece(data, data->out_x , data->out_y);
-	DEBUG("x = %d\t y = %d", data->out_x, data->out_y);
-	printf("%d %d\n", data->out_x, data->out_y);
-}
-
 void	player_move(t_filler *data)
 {
 	int		i;
@@ -140,5 +133,7 @@ void	player_move(t_filler *data)
 				check_priority(data, i, j);
 		}
 	}
-	make_move(data);
+	set_piece(data, data->out_x , data->out_y);
+	DEBUG("x = %d\t y = %d", data->out_x, data->out_y);
+	printf("%d %d\n", data->out_x, data->out_y);
 }

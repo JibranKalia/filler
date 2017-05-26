@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 17:55:45 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 18:15:27 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ int		main(void)
 	get_mapdem(data);
 	make_map(data);
 	make_heatmap(data);
-	while (get_next_line(STDIN, &line) > 0)
+	while (1)
 	{
+		get_next_line(STDIN, &line);
 		read_map(data);
 		check_map(data);
 		read_piece(data);
@@ -59,7 +60,6 @@ int		main(void)
 		print_heatmap(data);
 		player_move(data);
 		check_map(data);
-		//		ft_strdel(&line);
 	}
-	return (0);
+	//return (0);
 }
