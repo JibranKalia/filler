@@ -4,6 +4,7 @@ filler
 out
 blah*
 filler.trace
+.nfs*
 
 # Object files #
 ###################
