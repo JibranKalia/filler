@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:39 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 22:44:23 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 22:45:24 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int		check_piece(t_filler *data)
 	int		j;
 
 	j = -1;
-	DEBUG("Check Piece");
 	while (++j < data->piece_y)
 		ft_dprintf(2, "\t%s\n", data->piece[j]);
 	return (0);
@@ -80,7 +79,6 @@ int		read_piece(t_filler *data)
 	int		i;
 
 	i = 0;
-	DEBUG("Read Piece");
 	get_next_line(STDIN, &line);
 	while (!ISDIGIT(line[i]))
 		++i;

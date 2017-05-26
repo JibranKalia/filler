@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 22:44:10 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 22:50:26 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void	player_move(t_filler *data)
 				check_priority(data, i, j);
 		}
 	}
-	ft_dprintf(2, "%d %d\n", data->out_y, data->out_x);
 	ft_dprintf(1, "%d %d\n", data->out_y, data->out_x);
 	data->out_heatscore = 0;
 }

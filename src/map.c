@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:36 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 22:43:10 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 22:45:29 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	read_map(t_filler *data)
 	int		j;
 	char	*line;
 
-	DEBUG("Read Map");
 	j = -1;
 	while (++j < data->map_y)
 	{
