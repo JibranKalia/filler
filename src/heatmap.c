@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 17:18:52 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 17:37:56 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 18:53:18 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,51 +55,22 @@ int		make_heatmap(t_filler *data)
 	return (0);
 }
 
+#define HEATMAP data->heatmap[j][i]
+
 void	fill_heatmap(t_filler *data, int x, int y)
 {
+	int		curr;
 	int		i;
 	int		j;
-	int		curr;
 
-	j = y;
 	curr = 100;
-	DEBUG("FILL Heatmap x = %d\t y = %d", x, y);
-	while (j >= 0)
-	{
-		data->heatmap[j][x] = MAX(data->heatmap[j][x], curr);
-		--j;
-		if (curr > 0)
-			--curr;
-	}
-	curr = 100;
-	j = y;
-	while (j < data->map_y)
-	{
-		data->heatmap[j][x] = MAX(data->heatmap[j][x], curr);
-		if (curr > 0)
-			--curr;
-		++j;
-	}
 	j = -1;
 	while (++j < data->map_y)
 	{
-		i = x;
-		curr = data->heatmap[j][x];
-		while (i < data->map_x)
+		i = -1;
+		while (++i < data->map_x)
 		{
-			data->heatmap[j][i] = MAX(data->heatmap[j][i], curr);
-			if (curr > 0)
-				--curr;
-			++i;
-		}
-		i = x;
-		curr = data->heatmap[j][x];
-		while (i >= 0)
-		{
-			data->heatmap[j][i] = MAX(data->heatmap[j][i], curr);
-			if (curr > 0)
-				--curr;
-			--i;
+			HEATMAP = MAX(HEATMAP, curr - (ft_abs(x - i) + ft_abs(y - j)));
 		}
 	}
 }

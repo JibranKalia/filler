@@ -6,12 +6,11 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 18:31:12 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 18:48:39 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
-#define TESTPRINT(M, ...) ft_dprintf(2, M, ##__VA_ARGS__);
 
 /**
 void	data_cleanup(t_filler *data)
@@ -55,13 +54,13 @@ int		main(void)
 		make_heatmap(data);
 		get_next_line(STDIN, &line);
 		read_map(data);
-//		check_map(data);
+		check_map(data);
 		read_piece(data);
-//		check_piece(data);
+		check_piece(data);
 		update_heatmap(data);
-//		print_heatmap(data);
+		print_heatmap(data);
 		player_move(data);
-//		check_map(data);
+		check_map(data);
 	}
 	return (0);
 }
