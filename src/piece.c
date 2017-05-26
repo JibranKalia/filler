@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:39 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 22:45:24 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 23:30:43 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,14 @@ int		check_piece(t_filler *data)
 void	clean_piece(t_filler *data)
 {
 	int		j;
-	int		y;
-	int		x;
-
-	y = data->piece_y;
-	x = data->piece_x;
 
 	j = -1;
-	while (++j < y)
+	while (++j < data->piece_y)
 	{
 		free(data->piece[j]);
 		data->piece[j] = NULL;
 	}
+	free(data->piece);
 	data->piece = NULL;
 }
 
