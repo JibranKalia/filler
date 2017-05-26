@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 18:15:27 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 18:31:12 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,25 @@ int		main(void)
 	t_filler	*data;
 	char		*line;
 
+	(void)line;
+	(void)data;
 	DEBUG("INSIDE MAIN");
 	data = ft_memalloc(sizeof(t_filler));
-	get_player(data);
-	get_mapdem(data);
-	make_map(data);
-	make_heatmap(data);
 	while (1)
 	{
+		get_player(data);
+		get_mapdem(data);
+		make_map(data);
+		make_heatmap(data);
 		get_next_line(STDIN, &line);
 		read_map(data);
-		check_map(data);
+//		check_map(data);
 		read_piece(data);
-		check_piece(data);
+//		check_piece(data);
 		update_heatmap(data);
-		print_heatmap(data);
+//		print_heatmap(data);
 		player_move(data);
-		check_map(data);
+//		check_map(data);
 	}
-	//return (0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 18:07:51 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 18:26:54 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,6 @@ void	player_move(t_filler *data)
 		}
 	}
 	set_piece(data, data->out_x , data->out_y);
-	DEBUG("x = %d\t y = %d", data->out_x, data->out_y);
-	printf("%d %d\n", data->out_x, data->out_y);
+	dprintf(2, "%s x = %d\t y = %d%s\n", RED, data->out_x, data->out_y, CLEAR);
+	printf("%d %d", data->out_x, data->out_y);
 }

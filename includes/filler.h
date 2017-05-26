@@ -6,11 +6,12 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:49:07 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 17:49:21 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 18:20:59 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLER_H
+# define NDEBUG
 # define FILLER_H
 # include <libft.h>
 # define STDIN STDIN_FILENO
