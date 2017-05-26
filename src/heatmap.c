@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 17:18:52 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 19:11:58 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 22:42:57 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,16 @@ void	print_heatmap(t_filler *data)
 	int		j;
 	int		i;
 
-	DEBUG("Print Heatmap");
 	j = -1;
 	while (++j < data->map_y)
 	{
 		i = -1;
-		dprintf(2, "\t");
+		ft_dprintf(2, "\t");
 		while (++i < data->map_x)
 		{
-			dprintf(2, "%s%3d%s", GREEN, data->heatmap[j][i], CLEAR);
+			ft_dprintf(2, "%s%3d%s", GREEN, data->heatmap[j][i], CLEAR);
 		}
-		dprintf(2, "\n");
+		ft_dprintf(2, "\n");
 	}
 }
 
@@ -38,7 +37,6 @@ int		make_heatmap(t_filler *data)
 	int		x;
 	int		y;
 
-	DEBUG("Make Heatmap");
 	y = data->map_y + 1;
 	x = data->map_x + 1;
 	data->heatmap = (int **)malloc(sizeof(int *) * y);
@@ -79,8 +77,6 @@ void	update_heatmap(t_filler *data)
 	int		j;
 
 	j = -1;
-	DEBUG("Update Heatmap");
-	DEBUG("Player = %c\t AI = %c", data->player, data->ai);
 	while (++j < data->map_y)
 	{
 		i = -1;

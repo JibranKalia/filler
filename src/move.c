@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 21:41:18 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 22:44:10 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		is_safe(t_filler *data, int x, int y)
 	int		j;
 	int		track;
 
-	track = 0;;
+	track = 0;
 	j = -1;
 	while (++j < data->piece_y)
 	{
@@ -44,8 +44,6 @@ void	set_piece(t_filler *data, int x, int y)
 {
 	int		i;
 	int		j;
-
-	DEBUG("SET PIECE x = %d\t y = %d", x, y);
 
 	j = -1;
 	while (++j < data->piece_y)
@@ -80,14 +78,12 @@ void	check_priority(t_filler *data, int x, int y)
 {
 	int		tmpheatscore;
 
-	DEBUG("CHECK PRIORITY x = %d\t y = %d", x, y);
 	tmpheatscore = calculate_heatscore(data, x, y);
 	if (data->out_heatscore < tmpheatscore)
 	{
 		data->out_x = x;
 		data->out_y = y;
 		data->out_heatscore = tmpheatscore;
-		DEBUG("Heatscore = %d", data->out_heatscore);
 	}
 }
 
@@ -95,7 +91,6 @@ void	player_move(t_filler *data)
 {
 	int		i;
 	int		j;
-
 
 	j = -1;
 	while (++j + (data->piece_y - 1) < data->map_y)
@@ -107,7 +102,7 @@ void	player_move(t_filler *data)
 				check_priority(data, i, j);
 		}
 	}
-	set_piece(data, data->out_x , data->out_y);
-	dprintf(2, "%s x = %d\t y = %d%s\n", RED, data->out_x, data->out_y, CLEAR);
-	printf("%d %d\n", data->out_x, data->out_y);
+	ft_dprintf(2, "%d %d\n", data->out_y, data->out_x);
+	ft_dprintf(1, "%d %d\n", data->out_y, data->out_x);
+	data->out_heatscore = 0;
 }

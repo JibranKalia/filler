@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 18:48:39 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 22:43:01 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,17 @@ void	get_player(t_filler *data)
 	number = ft_atoi(tmp);
 	data->player = (number == 1) ? 'O' : 'X';
 	data->ai = (number == 1) ? 'X' : 'O';
-	DEBUG("Player = %d", number);
 	ft_strdel(&line);
+}
+
+void		skip_line(char **line)
+{
+	if (!ft_strncmp(*line, "Plateau", 7))
+	{
+		ft_strdel(line);
+		get_next_line(STDIN, line);
+	}
+	ft_strdel(line);
 }
 
 int		main(void)
@@ -42,25 +51,18 @@ int		main(void)
 	t_filler	*data;
 	char		*line;
 
-	(void)line;
-	(void)data;
-	DEBUG("INSIDE MAIN");
 	data = ft_memalloc(sizeof(t_filler));
-	while (1)
+	get_player(data);
+	get_mapdem(data);
+	make_map(data);
+	make_heatmap(data);
+	while (get_next_line(STDIN, &line) > 0)
 	{
-		get_player(data);
-		get_mapdem(data);
-		make_map(data);
-		make_heatmap(data);
-		get_next_line(STDIN, &line);
+		skip_line(&line);
 		read_map(data);
-		check_map(data);
 		read_piece(data);
-		check_piece(data);
 		update_heatmap(data);
-		print_heatmap(data);
 		player_move(data);
-		check_map(data);
 	}
 	return (0);
 }

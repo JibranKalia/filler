@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:49:07 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 19:13:54 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 22:01:13 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define HEATMAX 100
 # define STDERR STDERR_FILENO
 # define STDOUT STDOUT_FILENO
+# define NDEBUG
 
 typedef struct	s_filler
 {

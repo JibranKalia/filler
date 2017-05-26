@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:36 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 17:24:43 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 22:43:10 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	get_mapdem(t_filler *data)
 	while (!ISDIGIT(line[i]))
 		++i;
 	data->map_x = ft_atoi(&line[i]);
-	DEBUG("map_y = %d map_x = %d", data->map_y, data->map_x);
 	ft_strdel(&line);
 }
 
@@ -55,9 +54,8 @@ int		check_map(t_filler *data)
 	int		j;
 
 	j = -1;
-	DEBUG("Check Map");
 	while (++j < data->map_y)
-		dprintf(2, "%s\t%s\n%s", GREEN, data->map[j], CLEAR);
+		ft_dprintf(2, "%s\t%s\n%s", GREEN, data->map[j], CLEAR);
 	return (0);
 }
 
