@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 17:18:52 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 16:46:56 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 17:19:35 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,15 @@ void	update_heatmap(t_filler *data)
 
 	j = -1;
 	DEBUG("Update Heatmap");
+	DEBUG("Player = %c\t AI = %c", data->player, data->ai);
 	while (++j < data->map_y)
 	{
 		i = -1;
 		while (++i < data->map_x)
 		{
-			if (TOUPPER(data->map[j][i]) == TOUPPER(data->ai))
+			if (data->map[j][i] == data->ai)
 				fill_heatmap(data, i, j);
+//			DEBUG("%c\t%c", data->map[j][i], data->ai);
 		}
 	}
 }

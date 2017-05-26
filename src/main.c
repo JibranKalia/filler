@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 16:46:04 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 17:24:27 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	get_player(t_filler *data)
 	data->player = (number == 1) ? 'O' : 'X';
 	data->ai = (number == 1) ? 'X' : 'O';
 	DEBUG("Player = %d", number);
-	DEBUG("Player = %c\t AI = %c", data->player, data->ai);
 	ft_strdel(&line);
 }
 
@@ -51,7 +50,7 @@ int		main(void)
 	char		*line;
 
 	DEBUG("INSIDE MAIN");
-	data = ft_memalloc(sizeof(t_filler *));
+	data = ft_memalloc(sizeof(t_filler));
 	get_player(data);
 	get_mapdem(data);
 	make_map(data);
@@ -66,8 +65,7 @@ int		main(void)
 		print_heatmap(data);
 		player_move(data);
 		put_answer(data);
-//		ft_strdel(&line);
-		exit(0);
+		//		ft_strdel(&line);
 	}
 	return (0);
 }
