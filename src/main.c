@@ -6,16 +6,11 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 23:30:46 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 00:15:23 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
-
-void	data_cleanup(t_filler *data)
-{
-	ft_tbldel(data->map);
-}
 
 void	get_player(t_filler *data)
 {
@@ -60,6 +55,5 @@ int		main(void)
 		update_heatmap(data);
 		player_move(data);
 	}
-	data_cleanup(data);
 	return (0);
 }
