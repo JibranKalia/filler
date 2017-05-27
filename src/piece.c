@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:39 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/27 00:17:09 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 00:49:43 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,52 @@ int		get_yshift(t_filler *data)
 	return (yshift);
 }
 
+int		get_yend(t_filler *data)
+{
+	int		i;
+	int		j;
+	int		yend;
+
+	i = data->piece_x - 1;
+	yend = 0;
+	while (i >= 0)
+	{
+		j = data->piece_y - 1;
+		while (j >= 0)
+		{
+			if (data->piece[j][i] == '*')
+				return (yend);
+			--j;
+		}
+		--i;
+		++yend;
+	}
+	return (yend);
+}
+
+int		get_xend(t_filler *data)
+{
+	int		i;
+	int		j;
+	int		xend;
+
+	j = data->piece_y - 1;
+	xend = 0;
+	while (j >= 0)
+	{
+		i = data->piece_x - 1;
+		while (i >= 0)
+		{
+			if (data->piece[j][i] == '*')
+				return (xend);
+			--i;
+		}
+		--j;
+		++xend;
+	}
+	return (xend);
+}
+
 int		get_xshift(t_filler *data)
 {
 	int		i;
@@ -78,6 +124,21 @@ int		get_xshift(t_filler *data)
 	return (xshift);
 }
 
+void	trim_piece(t_filler *data)
+{
+	int		j;
+
+	data->trimpiece_x = data->piece_x - data->xshift - data->xend;
+	data->trimpiece_y = data->piece_y - data->yshift - data->yend;
+	data->trimpiece = ft_memalloc(sizeof(char *) * data->trimpiece_y);
+	j = -1;
+	while (++j < data->trimpiece_y)
+	{
+		data->trimpiece[j] = ft_memalloc(sizeof(char) * data->trimpiece_x);
+		ft_memcpy(data->trimpiece[j], (data->piece[j + data->yshift] + data->xshift), data->trimpiece_x);
+	}
+}
+
 
 int		read_piece(t_filler *data)
 {
@@ -96,5 +157,14 @@ int		read_piece(t_filler *data)
 	data->piece_x = ft_atoi(&line[i]);
 	ft_strdel(&line);
 	get_piece(data);
+	//check_piece(data);
+	data->yshift = get_yshift(data);
+	ft_dprintf(2, "%s\t yshift = %d\n%s", RED, data->yshift, CLEAR);
+	data->xshift = get_xshift(data);
+	ft_dprintf(2, "%s\t xshift = %d\n%s", RED, data->xshift, CLEAR);
+	data->yend = get_yend(data);
+	ft_dprintf(2, "%s\t yend = %d\n%s", RED, data->yend, CLEAR);
+	data->xend = get_xend(data);
+	ft_dprintf(2, "%s\t xend = %d\n%s", RED, data->xend, CLEAR);
 	return (0);
 }

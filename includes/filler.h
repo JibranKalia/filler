@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:49:07 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 23:23:44 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 00:48:26 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ typedef struct	s_filler
 {
 	int			map_x;
 	int			map_y;
+	int			xshift;
+	int			yshift;
+	int			xend;
+	int			yend;
 	int			out_x;
 	int			out_y;
 	int			out_heatscore;
@@ -33,6 +37,9 @@ typedef struct	s_filler
 	char		**piece;
 	int			piece_x;
 	int			piece_y;
+	char		**trimpiece;
+	int			trimpiece_x;
+	int			trimpiece_y;
 }				t_filler;
 
 void			get_player(t_filler *data);

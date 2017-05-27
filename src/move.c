@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 23:30:15 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 00:26:34 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int		is_safe(t_filler *data, int x, int y)
 		{
 			if (data->piece[j][i] == '*')
 			{
-				if (data->map[y + j][x + i] == data->player)
+				if (TOUPPER(data->map[y + j][x + i]) == data->player)
 					++track;
-				else if (data->map[y + j][x + i] == data->ai)
+				else if (TOUPPER(data->map[y + j][x + i]) == data->ai)
 					return (-1);
 			}
 		}
