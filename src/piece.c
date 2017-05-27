@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:39 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/27 01:23:43 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 01:54:18 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,6 @@ int		get_xshift(t_filler *data)
 	return (xshift);
 }
 
-	/**
-	**/
-
 void	make_trimpiece(t_filler *data)
 {
 	int		j;
@@ -151,7 +148,7 @@ int		check_trimpiece(t_filler *data)
 
 	j = -1;
 	while (++j < data->newy)
-		ft_dprintf(2, "\t%s\n", data->trimpiece[j]);
+		dprintf(2, "%s\t%s\n%s", GREEN, data->trimpiece[j], CLEAR);
 	return (0);
 }
 
@@ -187,6 +184,6 @@ int		read_piece(t_filler *data)
 	//ft_dprintf(2, "%s\t xnew = %d\n%s", RED, data->newx, CLEAR);
 	//ft_dprintf(2, "%s\t ynew = %d\n%s", RED, data->newy, CLEAR);
 	make_trimpiece(data);
-	check_trimpiece(data);
+//	check_trimpiece(data);
 	return (0);
 }
