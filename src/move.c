@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/26 18:28:04 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/26 19:36:38 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	check_priority(t_filler *data, int x, int y)
 {
 	int		tmpheatscore;
 
+//	DEBUG("CHECK PRIORITY = %d y = %d", x, y);
 	tmpheatscore = calculate_heatscore(data, x, y);
 	if (data->out_heatscore <= tmpheatscore)
 	{
@@ -103,5 +104,6 @@ void	player_move(t_filler *data)
 		}
 	}
 	ft_dprintf(1, "%d %d\n", data->out_y, data->out_x);
+//	ft_dprintf(2, "\tOUT %s%d %d\n%s", GREEN, data->out_y, data->out_x, CLEAR);
 	data->out_heatscore = 0;
 }
