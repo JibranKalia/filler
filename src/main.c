@@ -6,20 +6,16 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 22:43:01 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/26 18:15:49 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-/**
 void	data_cleanup(t_filler *data)
 {
-	(void)data;
 	ft_tbldel(data->map);
-	ft_tbldel(data->piece);
 }
-**/
 
 void	get_player(t_filler *data)
 {
@@ -36,7 +32,7 @@ void	get_player(t_filler *data)
 	ft_strdel(&line);
 }
 
-void		skip_line(char **line)
+void	skip_line(char **line)
 {
 	if (!ft_strncmp(*line, "Plateau", 7))
 	{
@@ -62,7 +58,9 @@ int		main(void)
 		read_map(data);
 		read_piece(data);
 		update_heatmap(data);
+		//print_heatmap(data);
 		player_move(data);
 	}
+	data_cleanup(data);
 	return (0);
 }

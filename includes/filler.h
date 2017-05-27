@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:49:07 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 22:01:13 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/25 23:23:44 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ void			clean_piece(t_filler *data);
 /*
 ** HEATMAP
 */
-void		print_heatmap(t_filler *data);
-void		update_heatmap(t_filler *data);
+void			print_heatmap(t_filler *data);
+void			update_heatmap(t_filler *data);
 #endif
