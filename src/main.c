@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:46:50 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 23:30:46 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/26 18:15:49 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		main(void)
 		read_map(data);
 		read_piece(data);
 		update_heatmap(data);
+		//print_heatmap(data);
 		player_move(data);
 	}
 	data_cleanup(data);
