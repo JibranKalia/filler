@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:39 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/27 00:15:16 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 00:17:09 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,47 @@ void	get_piece(t_filler *data)
 		i++;
 	}
 	data->piece = piece;
+}
+
+int		get_yshift(t_filler *data)
+{
+	int		j;
+	int		i;
+	int		yshift;
+
+	i = -1;
+	yshift = 0;
+	while (++i < data->piece_x)
+	{
+		j = -1;
+		while (++j < data->piece_y)
+		{
+			if (data->piece[j][i] == '*')
+				return (yshift);
+		}
+		++yshift;
+	}
+	return (yshift);
+}
+
+int		get_xshift(t_filler *data)
+{
+	int		i;
+	int		j;
+	int		xshift;
+	j = -1;
+	xshift = 0;
+	while (++j < data->piece_y)
+	{
+		i = -1;
+		while (++i < data->piece_x)
+		{
+			if (data->piece[j][i] == '*')
+				return (xshift);
+		}
+		++xshift;
+	}
+	return (xshift);
 }
 
 
