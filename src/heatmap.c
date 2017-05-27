@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 17:18:52 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 22:42:57 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 02:17:43 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_heatmap(t_filler *data)
 		ft_dprintf(2, "\t");
 		while (++i < data->map_x)
 		{
-			ft_dprintf(2, "%s%3d%s", GREEN, data->heatmap[j][i], CLEAR);
+			ft_dprintf(2, "%s%5d%s", GREEN, data->heatmap[j][i], CLEAR);
 		}
 		ft_dprintf(2, "\n");
 	}
@@ -59,6 +59,7 @@ void	fill_heatmap(t_filler *data, int x, int y)
 {
 	int		i;
 	int		j;
+	int		out;
 
 	j = -1;
 	while (++j < data->map_y)
@@ -66,7 +67,8 @@ void	fill_heatmap(t_filler *data, int x, int y)
 		i = -1;
 		while (++i < data->map_x)
 		{
-			HEATMAP = MAX(HEATMAP, HEATMAX - (ft_abs(x - i) + ft_abs(y - j)));
+			out = HEATMAX - (ft_abs(x - i) + ft_abs(y - j));
+			HEATMAP = MAX(HEATMAP, out);
 		}
 	}
 }

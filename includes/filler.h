@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:49:07 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/27 01:58:07 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 02:20:06 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FILLER_H
 # include <libft.h>
 # define STDIN STDIN_FILENO
-# define HEATMAX 100
+# define HEATMAX 900
 # define STDERR STDERR_FILENO
 # define STDOUT STDOUT_FILENO
 # define NDEBUG
@@ -40,6 +40,7 @@ typedef struct	s_filler
 	char		**trimpiece;
 	int			newx;
 	int			newy;
+	int			side;
 }				t_filler;
 
 void			get_player(t_filler *data);
