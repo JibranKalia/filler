@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/26 18:28:04 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 02:48:21 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int		is_safe(t_filler *data, int x, int y)
 
 	track = 0;
 	j = -1;
-	while (++j < data->piece_y)
+	while (++j < data->newy)
 	{
 		i = -1;
-		while (++i < data->piece_x)
+		while (++i < data->newx)
 		{
-			if (data->piece[j][i] == '*')
+			if (data->trimpiece[j][i] == '*')
 			{
 				if (data->map[y + j][x + i] == data->player)
 					++track;
@@ -40,17 +40,17 @@ int		is_safe(t_filler *data, int x, int y)
 	return ((track == 1) ? 1 : -1);
 }
 
-void	set_piece(t_filler *data, int x, int y)
+void	set_trimpiece(t_filler *data, int x, int y)
 {
 	int		i;
 	int		j;
 
 	j = -1;
-	while (++j < data->piece_y)
+	while (++j < data->newy)
 	{
 		i = -1;
-		while (++i < data->piece_x)
-			data->map[y + j][x + i] = data->piece[j][i];
+		while (++i < data->newx)
+			data->map[y + j][x + i] = data->trimpiece[j][i];
 	}
 }
 
@@ -62,12 +62,12 @@ int		calculate_heatscore(t_filler *data, int x, int y)
 
 	score = 0;
 	j = -1;
-	while (++j < data->piece_y)
+	while (++j < data->newy)
 	{
 		i = -1;
-		while (++i < data->piece_x)
+		while (++i < data->newx)
 		{
-			if (data->piece[j][i] == '*')
+			if (data->trimpiece[j][i] == '*')
 				score += data->heatmap[y + j][x + i];
 		}
 	}
@@ -79,11 +79,25 @@ void	check_priority(t_filler *data, int x, int y)
 	int		tmpheatscore;
 
 	tmpheatscore = calculate_heatscore(data, x, y);
-	if (data->out_heatscore <= tmpheatscore)
+	if (data->side % 2 == 0)
 	{
-		data->out_x = x;
-		data->out_y = y;
-		data->out_heatscore = tmpheatscore;
+		if (data->out_heatscore < tmpheatscore)
+		{
+			data->out_x = x - data->yshift;
+			data->out_y = y - data->xshift;
+			data->out_heatscore = tmpheatscore;
+			++data->side;
+		}
+	}
+	else
+	{
+		if (data->out_heatscore <= tmpheatscore)
+		{
+			data->out_x = x - data->yshift;
+			data->out_y = y - data->xshift;
+			data->out_heatscore = tmpheatscore;
+			++data->side;
+		}
 	}
 }
 
@@ -93,10 +107,10 @@ void	player_move(t_filler *data)
 	int		j;
 
 	j = -1;
-	while (++j + (data->piece_y - 1) < data->map_y)
+	while (++j + (data->newy - 1) < data->map_y)
 	{
 		i = -1;
-		while (++i + (data->piece_x - 1) < data->map_x)
+		while (++i + (data->newx - 1) < data->map_x)
 		{
 			if (is_safe(data, i, j) == 1)
 				check_priority(data, i, j);

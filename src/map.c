@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:36 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 22:45:29 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 01:31:33 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		check_map(t_filler *data)
 
 	j = -1;
 	while (++j < data->map_y)
-		ft_dprintf(2, "%s\t%s\n%s", GREEN, data->map[j], CLEAR);
+		ft_dprintf(2, "%s\t%s%s\n", GREEN, data->map[j], CLEAR);
 	return (0);
 }
 
@@ -68,7 +68,7 @@ void	read_map(t_filler *data)
 	while (++j < data->map_y)
 	{
 		get_next_line(STDIN, &line);
-		memcpy(data->map[j], &line[4], data->map_x);
+		ft_memcpy(data->map[j], &line[4], data->map_x);
 		ft_strdel(&line);
 	}
 }

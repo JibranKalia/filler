@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:39 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/26 18:24:07 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 02:49:39 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,6 @@ void	get_piece(t_filler *data)
 	data->piece = piece;
 }
 
-int		create_piece(t_filler *data)
-{
-	int		j;
-	int		x;
-	int		y;
-
-	y = data->piece_y + 1;
-	x = data->piece_x + 1;
-	data->piece = (char **)ft_memalloc(sizeof(char *) * y);
-	MEMCHECK(data->piece);
-	j = -1;
-	while (++j < y)
-	{
-		data->piece[j] = (char *)ft_memalloc(sizeof(char) * x);
-		MEMCHECK(data->piece[j]);
-	}
-	return (0);
-}
-
 int		check_piece(t_filler *data)
 {
 	int		j;
@@ -56,32 +37,33 @@ int		check_piece(t_filler *data)
 	return (0);
 }
 
-void	clean_piece(t_filler *data)
+void	make_trimpiece(t_filler *data)
 {
 	int		j;
+	int		i;
 
+	data->trimpiece = (char **)ft_memalloc(sizeof(char *) * data->newy);
 	j = -1;
-	while (++j < data->piece_y)
+	while (++j < data->newy)
+		data->trimpiece[j] = ft_strnew(data->newx + 1);
+	j = -1;
+	while (++j < data->newy)
 	{
-		free(data->piece[j]);
-		data->piece[j] = NULL;
+		i = -1;
+		while (++i < data->newx)
+			data->trimpiece[j][i] =
+				data->piece[j + data->xshift][i + data->yshift];
 	}
-	free(data->piece);
-	data->piece = NULL;
 }
 
-void	fill_piece(t_filler *data)
+int		check_trimpiece(t_filler *data)
 {
 	int		j;
-	char	*line;
 
 	j = -1;
-	while (++j < data->piece_y)
-	{
-		get_next_line(STDIN, &line);
-		memcpy(data->piece[j], line, data->piece_x);
-		ft_strdel(&line);
-	}
+	while (++j < data->newy)
+		ft_dprintf(2, "%s\t%s\n%s", GREEN, data->trimpiece[j], CLEAR);
+	return (0);
 }
 
 int		read_piece(t_filler *data)
@@ -101,5 +83,12 @@ int		read_piece(t_filler *data)
 	data->piece_x = ft_atoi(&line[i]);
 	ft_strdel(&line);
 	get_piece(data);
+	data->yshift = get_yshift(data);
+	data->xshift = get_xshift(data);
+	data->yend = get_yend(data);
+	data->xend = get_xend(data);
+	data->newx = data->piece_x - data->yshift - data->yend;
+	data->newy = data->piece_y - data->xshift - data->xend;
+	make_trimpiece(data);
 	return (0);
 }
