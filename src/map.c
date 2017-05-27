@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:36 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/25 22:45:29 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 00:19:25 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	read_map(t_filler *data)
 	while (++j < data->map_y)
 	{
 		get_next_line(STDIN, &line);
-		memcpy(data->map[j], &line[4], data->map_x);
+		ft_memcpy(data->map[j], &line[4], data->map_x);
 		ft_strdel(&line);
 	}
 }
