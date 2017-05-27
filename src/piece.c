@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:39 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/27 00:54:25 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 01:23:43 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,24 +124,35 @@ int		get_xshift(t_filler *data)
 	return (xshift);
 }
 
-void	trim_piece(t_filler *data)
+	/**
+	**/
+
+void	make_trimpiece(t_filler *data)
+{
+	int		j;
+	int		i;
+
+	data->trimpiece = (char **)ft_memalloc(sizeof(char *) * data->newy);
+	j = -1;
+	while (++j < data->newy)
+		data->trimpiece[j] = ft_strnew(data->newx + 1);
+	j = -1;
+	while (++j < data->newy)
+	{
+		i = -1;
+		while (++i < data->newx)
+			data->trimpiece[j][i] = data->piece[j + data->xshift][i + data->yshift];
+	}
+}
+
+int		check_trimpiece(t_filler *data)
 {
 	int		j;
 
-	(void)j;
-	data->newx = data->piece_x - data->yshift - data->yend;
-	data->newy = data->piece_y - data->xshift - data->xend;
-	ft_dprintf(2, "%s\t xnew = %d\n%s", RED, data->newx, CLEAR);
-	ft_dprintf(2, "%s\t ynew = %d\n%s", RED, data->newy, CLEAR);
-	/**
-	data->trimpiece = ft_memalloc(sizeof(char *) * data->trimpiece_y);
 	j = -1;
-	while (++j < data->trimpiece_y)
-	{
-		data->trimpiece[j] = ft_memalloc(sizeof(char) * data->trimpiece_x);
-		ft_memcpy(data->trimpiece[j], (data->piece[j + data->yshift] + data->xshift), data->trimpiece_x);
-	}
-	**/
+	while (++j < data->newy)
+		ft_dprintf(2, "\t%s\n", data->trimpiece[j]);
+	return (0);
 }
 
 
@@ -164,13 +175,18 @@ int		read_piece(t_filler *data)
 	get_piece(data);
 	//check_piece(data);
 	data->yshift = get_yshift(data);
-	ft_dprintf(2, "%s\t yshift = %d\n%s", RED, data->yshift, CLEAR);
 	data->xshift = get_xshift(data);
-	ft_dprintf(2, "%s\t xshift = %d\n%s", RED, data->xshift, CLEAR);
 	data->yend = get_yend(data);
-	ft_dprintf(2, "%s\t yend = %d\n%s", RED, data->yend, CLEAR);
 	data->xend = get_xend(data);
-	ft_dprintf(2, "%s\t xend = %d\n%s", RED, data->xend, CLEAR);
-	trim_piece(data);
+	data->newx = data->piece_x - data->yshift - data->yend;
+	data->newy = data->piece_y - data->xshift - data->xend;
+	//ft_dprintf(2, "%s\t yshift = %d\n%s", RED, data->yshift, CLEAR);
+	//ft_dprintf(2, "%s\t xshift = %d\n%s", RED, data->xshift, CLEAR);
+	//ft_dprintf(2, "%s\t yend = %d\n%s", RED, data->yend, CLEAR);
+	//ft_dprintf(2, "%s\t xend = %d\n%s", RED, data->xend, CLEAR);
+	//ft_dprintf(2, "%s\t xnew = %d\n%s", RED, data->newx, CLEAR);
+	//ft_dprintf(2, "%s\t ynew = %d\n%s", RED, data->newy, CLEAR);
+	make_trimpiece(data);
+	check_trimpiece(data);
 	return (0);
 }
