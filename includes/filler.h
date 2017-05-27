@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:49:07 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/27 00:48:26 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 00:54:01 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct	s_filler
 	int			piece_x;
 	int			piece_y;
 	char		**trimpiece;
-	int			trimpiece_x;
-	int			trimpiece_y;
+	int			newx;
+	int			newy;
 }				t_filler;
 
 void			get_player(t_filler *data);

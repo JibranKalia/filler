@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:27:39 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/27 00:49:43 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/27 00:54:25 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,12 @@ void	trim_piece(t_filler *data)
 {
 	int		j;
 
-	data->trimpiece_x = data->piece_x - data->xshift - data->xend;
-	data->trimpiece_y = data->piece_y - data->yshift - data->yend;
+	(void)j;
+	data->newx = data->piece_x - data->yshift - data->yend;
+	data->newy = data->piece_y - data->xshift - data->xend;
+	ft_dprintf(2, "%s\t xnew = %d\n%s", RED, data->newx, CLEAR);
+	ft_dprintf(2, "%s\t ynew = %d\n%s", RED, data->newy, CLEAR);
+	/**
 	data->trimpiece = ft_memalloc(sizeof(char *) * data->trimpiece_y);
 	j = -1;
 	while (++j < data->trimpiece_y)
@@ -137,6 +141,7 @@ void	trim_piece(t_filler *data)
 		data->trimpiece[j] = ft_memalloc(sizeof(char) * data->trimpiece_x);
 		ft_memcpy(data->trimpiece[j], (data->piece[j + data->yshift] + data->xshift), data->trimpiece_x);
 	}
+	**/
 }
 
 
@@ -166,5 +171,6 @@ int		read_piece(t_filler *data)
 	ft_dprintf(2, "%s\t yend = %d\n%s", RED, data->yend, CLEAR);
 	data->xend = get_xend(data);
 	ft_dprintf(2, "%s\t xend = %d\n%s", RED, data->xend, CLEAR);
+	trim_piece(data);
 	return (0);
 }
