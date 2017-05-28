@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:49:07 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/28 00:57:42 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/28 01:55:31 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct	s_filler
 	int			newy;
 	int			side;
 	int			init;
+	int			playerx;
+	int			playery;
 }				t_filler;
 
 void			get_player(t_filler *data);

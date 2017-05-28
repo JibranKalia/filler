@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 17:18:52 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/28 01:24:51 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/28 01:59:47 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_heatmap(t_filler *data)
 		ft_dprintf(2, "\t");
 		while (++i < data->map_x)
 		{
-			ft_dprintf(2, "%s%5d%s", GREEN, data->heatmap[j][i], CLEAR);
+			ft_dprintf(2, "%s%3d%s", GREEN, data->heatmap[j][i], CLEAR);
 		}
 		ft_dprintf(2, "\n");
 	}
@@ -70,7 +70,7 @@ void	fill_heatmap(t_filler *data, int x, int y, int heat)
 		i = -1;
 		while (++i < data->map_x)
 		{
-			out = heat - ((ft_abs(x - i) + ft_abs(y - j)) * 4);
+			out = heat - ((ft_abs(x - i) + ft_abs(y - j)));
 			HEATMAP = MAX(HEATMAP, out);
 		}
 	}
@@ -101,10 +101,9 @@ void	initial_fill(t_filler *data, int i, int j)
 	int		choosei;
 	int		choosej;
 
-	choosei = ((data->map_x - i) >= i) ? data->map_x - 1: 0;
-	choosej = ((data->map_y - j) >= j) ? data->map_y - 1: 0;
-	ft_dprintf(2, "CHOOSE J = %d\n", choosej);
-
+	choosei = (data->playerx > i) ? 1: 0;
+	choosej = (data->playery > j) ? 1: 0;
+	//ft_dprintf(2, "CHOOSE J = %d\n", choosej);
 	if (choosej == 0)
 	{
 		j = data->map_y;
@@ -146,6 +145,22 @@ void	initial_fill(t_filler *data, int i, int j)
 
 void	nested_loop(t_filler *data, int i, int j)
 {
+	int		x;
+	int		y;
+
+	y = -1;
+	while (++y < data->map_y)
+	{
+		x = -1;
+		while (++x < data->map_x)
+		{
+			if (data->map[y][x] == data->player)
+			{
+				data->playerx = x;
+				data->playery = y;
+			}
+		}
+	}
 	if (data->init == 0)
 		initial_fill(data, i, j);
 	fill_heatmap(data, i, j, HEATMAX);
