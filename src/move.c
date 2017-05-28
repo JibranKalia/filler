@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/27 23:18:33 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/05/28 01:19:33 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ int		calculate_heatscore(t_filler *data, int x, int y)
 		while (++i < data->newx)
 		{
 			if (data->trimpiece[j][i] == '*')
+			{
 				score += data->heatmap[y + j][x + i];
+			}
 		}
 	}
 	return (score);
