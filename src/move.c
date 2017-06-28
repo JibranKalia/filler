@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/06/28 13:06:56 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/06/28 13:21:23 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,6 @@ void	get_ai_pos(t_filler *data)
 	}
 }
 
-void	set_trimpiece(t_filler *data, int x, int y)
-{
-	int		i;
-	int		j;
-
-	j = -1;
-	while (++j < data->newy)
-	{
-		i = -1;
-		while (++i < data->newx)
-			data->map[y + j][x + i] = data->trimpiece[j][i];
-	}
-}
-
 int		calculate_heatscore(t_filler *data, int x, int y)
 {
 	int		score;
@@ -120,16 +106,7 @@ void	check_priority(t_filler *data, int x, int y)
 			data->out_x = x - data->yshift;
 			data->out_y = y - data->xshift;
 		}
-		
 	}
-}
-
-void	reset_data(t_filler *data)
-{
-	data->out_heatscore = 0;
-	data->out_y = 0;
-	data->out_x = 0;
-	data->bestdist = 0;
 }
 
 void	player_move(t_filler *data)
@@ -148,5 +125,8 @@ void	player_move(t_filler *data)
 		}
 	}
 	ft_dprintf(1, "%d %d\n", data->out_y, data->out_x);
-	reset_data(data);
+	data->out_heatscore = 0;
+	data->out_y = 0;
+	data->out_x = 0;
+	data->bestdist = 0;
 }
