@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/05/27 23:18:33 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/06/28 13:06:56 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,27 @@ int		is_safe(t_filler *data, int x, int y)
 		}
 	}
 	return ((track == 1) ? 1 : -1);
+}
+
+void	get_ai_pos(t_filler *data)
+{
+	int			i;
+	int			j;
+
+	j = -1;
+	while (++j < data->map_y)
+	{
+		i = -1;
+		while (++i < data->map_x)
+		{
+			if (TOUPPER(data->map[j][i]) == data->ai)
+			{
+				data->ai_pos_x = i;
+				data->ai_pos_y = j;
+				return ;
+			}
+		}
+	}
 }
 
 void	set_trimpiece(t_filler *data, int x, int y)
@@ -74,31 +95,41 @@ int		calculate_heatscore(t_filler *data, int x, int y)
 	return (score);
 }
 
+#define SQUARE(x) ((x)*(x))
+
 void	check_priority(t_filler *data, int x, int y)
 {
 	int		tmpheatscore;
+	float	dist;
 
 	tmpheatscore = calculate_heatscore(data, x, y);
-	if (data->side % 2 == 0)
+	if (data->out_heatscore < tmpheatscore)
 	{
-		if (data->out_heatscore < tmpheatscore)
+		data->out_x = x - data->yshift;
+		data->out_y = y - data->xshift;
+		data->out_heatscore = tmpheatscore;
+	}
+	if (data->out_heatscore == 0)
+	{
+		get_ai_pos(data);
+		dist = ft_sqrtf(SQUARE(x - data->ai_pos_x)
+				+ SQUARE(y - data->ai_pos_y));
+		if (data->bestdist > dist || data->bestdist == 0)
 		{
+			data->bestdist = dist;
 			data->out_x = x - data->yshift;
 			data->out_y = y - data->xshift;
-			data->out_heatscore = tmpheatscore;
-			++data->side;
 		}
+		
 	}
-	else
-	{
-		if (data->out_heatscore <= tmpheatscore)
-		{
-			data->out_x = x - data->yshift;
-			data->out_y = y - data->xshift;
-			data->out_heatscore = tmpheatscore;
-			++data->side;
-		}
-	}
+}
+
+void	reset_data(t_filler *data)
+{
+	data->out_heatscore = 0;
+	data->out_y = 0;
+	data->out_x = 0;
+	data->bestdist = 0;
 }
 
 void	player_move(t_filler *data)
@@ -117,7 +148,5 @@ void	player_move(t_filler *data)
 		}
 	}
 	ft_dprintf(1, "%d %d\n", data->out_y, data->out_x);
-	data->out_heatscore = 0;
-	data->out_y = 0;
-	data->out_x = 0;
+	reset_data(data);
 }

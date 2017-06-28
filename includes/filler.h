@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 17:49:07 by jkalia            #+#    #+#             */
-/*   Updated: 2017/06/28 09:39:26 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/06/28 13:17:32 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define FILLER_H
 # include <libft.h>
 # define STDIN STDIN_FILENO
-# define HEATMAX 900
+# define HEATMAX 15
+# define DIV 1.2
 # define STDERR STDERR_FILENO
 # define STDOUT STDOUT_FILENO
 
@@ -29,6 +30,7 @@ typedef struct	s_filler
 	int			out_x;
 	int			out_y;
 	int			out_heatscore;
+	float		bestdist;
 	char		player;
 	char		ai;
 	char		**map;
@@ -39,7 +41,8 @@ typedef struct	s_filler
 	char		**trimpiece;
 	int			newx;
 	int			newy;
-	int			side;
+	int			ai_pos_x;
+	int			ai_pos_y;
 }				t_filler;
 
 void			get_player(t_filler *data);
