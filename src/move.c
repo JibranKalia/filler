@@ -6,7 +6,7 @@
 /*   By: jkalia <jkalia@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:38:41 by jkalia            #+#    #+#             */
-/*   Updated: 2017/06/28 13:21:23 by jkalia           ###   ########.fr       */
+/*   Updated: 2017/06/28 21:23:18 by jkalia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	check_priority(t_filler *data, int x, int y)
 		get_ai_pos(data);
 		dist = ft_sqrtf(SQUARE(x - data->ai_pos_x)
 				+ SQUARE(y - data->ai_pos_y));
-		if (data->bestdist > dist || data->bestdist == 0)
+		if (data->bestdist > dist)
 		{
 			data->bestdist = dist;
 			data->out_x = x - data->yshift;
@@ -128,5 +128,5 @@ void	player_move(t_filler *data)
 	data->out_heatscore = 0;
 	data->out_y = 0;
 	data->out_x = 0;
-	data->bestdist = 0;
+	data->bestdist = data->map_x * data->map_y;
 }
